@@ -1,0 +1,99 @@
+{"BigQuery Schema":[
+  {
+    "description": "UniqueId",
+    "mode": "REQUIRED",
+    "name": "_id",
+    "type": "STRING"
+  },
+  {
+    "description": "brand",
+    "mode": "NULLABLE",
+    "name": "brand",
+    "type": "STRING"
+  },
+  {
+    "description": "category",
+    "mode": "NULLABLE",
+    "name": "category",
+    "type": "STRING"
+  },
+  {
+    "description": "engagementTimeMsec",
+    "mode": "NULLABLE",
+    "name": "engagementTimeMsec",
+    "type": "STRING"
+  },
+  {
+    "description": "eventBundleSequenceId",
+    "mode": "NULLABLE",
+    "name": "eventBundleSequenceId",
+    "type": "STRING"
+  },
+  {
+    "description": "eventDate",
+    "mode": "NULLABLE",
+    "name": "eventDate",
+    "type": "STRING"
+  },
+  {
+    "description": "eventName",
+    "mode": "NULLABLE",
+    "name": "eventName",
+    "type": "STRING"
+  },
+  {
+    "description": "eventTimestamp",
+    "mode": "NULLABLE",
+    "name": "eventTimestamp",
+    "type": "STRING"
+  },
+  {
+    "description": "gaSessionId",
+    "mode": "NULLABLE",
+    "name": "gaSessionId",
+    "type": "STRING"
+  },
+  {
+    "description": "price",
+    "mode": "NULLABLE",
+    "name": "price",
+    "type": "STRING"
+  },
+  {
+    "description": "productId",
+    "mode": "NULLABLE",
+    "name": "productId",
+    "type": "STRING"
+  },
+  {
+    "description": "productName",
+    "mode": "NULLABLE",
+    "name": "productName",
+    "type": "STRING"
+  },
+  {
+    "description": "quantity",
+    "mode": "NULLABLE",
+    "name": "quantity",
+    "type": "STRING"
+  },
+  {
+    "description": "uniqueItems",
+    "mode": "NULLABLE",
+    "name": "uniqueItems",
+    "type": "STRING"
+  },
+  {
+    "description": "userId",
+    "mode": "NULLABLE",
+    "name": "userId",
+    "type": "STRING"
+  }
+  ,
+  {
+    "description": "variant",
+    "mode": "NULLABLE",
+    "name": "variant",
+    "type": "STRING"
+  }
+]}

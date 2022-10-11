@@ -1,0 +1,87 @@
+connection: "ecomm_prod_bq"
+
+# include all the views
+include: "/views/**/*.view"
+
+datagroup: ecomm_prod_bq_default_datagroup {
+  # sql_trigger: SELECT MAX(id) FROM etl_log;;
+  max_cache_age: "1 hour"
+}
+
+persist_with: ecomm_prod_bq_default_datagroup
+
+explore: orders {
+  join: users {
+    type: left_outer
+    sql_on: ${orders.user_id} = ${users.user_id} ;;
+    relationship: many_to_one
+  }
+
+  join: orders__line_items {
+    view_label: "Orders: Lineitems"
+    sql: LEFT JOIN UNNEST(${orders.line_items}) as orders__line_items ;;
+    relationship: one_to_many
+  }
+}
+
+explore: training_data {
+  join: users {
+    type: left_outer
+    sql_on: ${training_data.user_id} = ${users.user_id} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: user_clusters_op {
+  join: users {
+    type: left_outer
+    sql_on: ${user_clusters_op.user_id} = ${users.user_id} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: products {}
+
+explore: events {
+  join: users {
+    type: left_outer
+    sql_on: ${events.user_id} = ${users.user_id} ;;
+    relationship: many_to_one
+  }
+
+  join: events__items {
+    view_label: "Events: Items"
+    sql: LEFT JOIN UNNEST(${events.items}) as events__items ;;
+    relationship: one_to_many
+  }
+}
+
+explore: prod_affinity_op {
+  join: users {
+    type: left_outer
+    sql_on: ${prod_affinity_op.user_id} = ${users.user_id} ;;
+    relationship: many_to_one
+  }
+}
+
+explore: events_flat_data {
+  join: orders {
+    type: left_outer
+    sql_on: ${events_flat_data.order_id} = ${orders.order_id} ;;
+    relationship: many_to_one
+  }
+
+  join: users {
+    type: left_outer
+    sql_on: ${events_flat_data.user_id} = ${users.user_id} ;;
+    relationship: many_to_one
+  }
+
+  join: events_flat_data__items {
+    view_label: "Events Flat Data: Items"
+    sql: LEFT JOIN UNNEST(${events_flat_data.items}) as events_flat_data__items ;;
+    relationship: one_to_many
+  }
+}
+
+explore: users {}

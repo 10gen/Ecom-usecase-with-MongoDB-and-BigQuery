@@ -1,0 +1,50 @@
+view: user_clusters_op {
+  sql_table_name: `ecomm_prod.user_clusters_op`
+    ;;
+
+  dimension: average_order_value {
+    type: number
+    sql: ${TABLE}.average_order_value ;;
+  }
+
+  dimension: centroid_id {
+    type: number
+    sql: ${TABLE}.CENTROID_ID ;;
+  }
+
+  dimension: no_of_orders {
+    type: number
+    sql: ${TABLE}.no_of_orders ;;
+  }
+
+  dimension: session_count {
+    type: number
+    sql: ${TABLE}.session_count ;;
+  }
+
+  dimension: total_time_spend_by_user_in_msec {
+    type: number
+    sql: ${TABLE}.total_time_spend_by_user_in_msec ;;
+  }
+
+  dimension: centroid_id_tier {
+    type: tier
+    tiers: [1,2,3,4]
+    style: relational
+    drill_fields: [user_id,average_order_value,no_of_orders,session_count,total_time_spend_by_user_in_msec]
+    sql: ${centroid_id} ;;
+  }
+
+
+  dimension: user_id {
+    type: string
+    # hidden: yes
+    sql: ${TABLE}.userId ;;
+  }
+
+
+  measure: count {
+    type: count
+    drill_fields: [user_id,average_order_value,no_of_orders,session_count,total_time_spend_by_user_in_msec]
+  }
+}
